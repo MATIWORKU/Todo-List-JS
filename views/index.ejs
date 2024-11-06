@@ -1,0 +1,65 @@
+<%- include('partials/header.ejs'); -%>
+<form class="tab-view tab-view-height-auto" action="/user" method="post">
+  <% users.forEach(function(user) { %>
+    <input class="nav" type="submit" name="user" value="<%= user.id %>" id="<%= user.id %>">
+    <label for="<%= user.id %>" style="background-color: <%= user.color %>;">
+      <%= user.name %>
+    </label>
+    <% }); %>
+
+      <input class="nav" type="submit" name="add" value="new" id="tab">
+      <label for="tab">Add Family Member</label>
+
+</form>
+
+  <div class="box" id="heading">
+    <form class="tab-view tab-view-height-auto" action="/title" method="post" style="display: flex;">
+      <% listTitle.forEach(function(title) { %>
+        <div class="box_item">
+          <input class="nav" type="submit" name="due_date" value="<%= title.due_date %>" id="<%= title.due_date %>">
+          <h1>
+            <%= title.due_date %>
+          </h1>
+        </div>
+      <% }); %>
+    </form>
+  </div>
+  <div class="box">
+    <% for(let item of listItems){%>
+      <div class="item">
+        <form action="/delete" method="post">
+          <input type="checkbox" onchange="this.form.submit()" name="deleteItemId" value="<%= item.id %>">
+        </form>
+
+        <p id="title<%=item.id%>">
+          <%= item.title %>
+        </p>
+
+        <form class="edit" action="/edit" method="post">
+          <input type="hidden" name="updatedItemId" value="<%= item.id %>">
+          <input id="input<%=item.id%>" type="text" name="updatedItemTitle" value="<%= item.title %>" autocomplete="off"
+            autofocus="true" hidden="true" required/>
+          <button id="done<%=item.id%>" class="edit" type="submit" hidden><img class="icon"
+              src="/assets/icons/check-solid.svg" alt="tick image"></button>
+        </form>
+        <button id="edit<%=item.id%>" class="edit" onclick="handler('<%=item.id%>')"><img class="icon"
+            src="/assets/icons/pencil-solid.svg" alt="pencil image"></button>
+      </div>
+      <% } %>
+
+        <form class="item" action="/add" method="post">
+          
+          <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus="true" />
+          <button class="add" type="submit">+</button>
+        </form>
+  </div>
+
+  <script>
+    function handler(id) {
+      document.getElementById("title" + id).setAttribute("hidden", true)
+      document.getElementById("edit" + id).setAttribute("hidden", true)
+      document.getElementById("done" + id).removeAttribute("hidden")
+      document.getElementById("input" + id).removeAttribute("hidden")
+    }
+  </script>
+  <%- include('partials/footer.ejs'); -%>
