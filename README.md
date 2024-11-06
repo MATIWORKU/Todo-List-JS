@@ -5,22 +5,22 @@ This is a Node.js and Express-based to-do list application that allows multiple 
 
 ## Table of Contents
 
-Features
-Screenshots
-Installation
-Usage
-Endpoints
-Folder Structure
-Technologies Used
-License
+- Features
+- Screenshots
+- Installation
+- Usage
+- Endpoints
+- Folder Structure
+- Technologies Used
+- License
 
 ## Features
 
-Multiple users can be managed within the app.
-Each user can categorize tasks by due date (today, this week, this month).
-Allows CRUD operations for tasks (Create, Read, Update, Delete).
-Task categories update dynamically.
-Simple UI to select users and manage tasks.
+* Multiple users can be managed within the app.
+* Each user can categorize tasks by due date (today, this week, this month).
+* Allows CRUD operations for tasks (Create, Read, Update, Delete).
+* Task categories update dynamically.
+* Simple UI to select users and manage tasks.
 
 ## Screenshots
 
@@ -31,15 +31,14 @@ Simple UI to select users and manage tasks.
 
 ### Prerequisites
 
-  Node.js and npm: Make sure you have Node.js and npm installed. Download Node.js here.
-  PostgreSQL: Install and configure PostgreSQL. This app connects to a PostgreSQL database to store data.
+- Node.js and npm: Make sure you have Node.js and npm installed. Download Node.js here.
+- PostgreSQL: Install and configure PostgreSQL. This app connects to a PostgreSQL database to store data.
 
 ## Steps
 
 1. Clone the Repository:
 
 ```bash
-Copy code
 git clone https://github.com/MATIWORKU/Todo-List-JS.git
 cd TODO List
 ```
@@ -47,13 +46,11 @@ cd TODO List
 2. Install Dependencies:
 
 ```bash
-Copy code
 npm install
 ```
 3. Configure Database: Create a PostgreSQL database, and add tables for users and items. Update the database configuration in index.js to match your local PostgreSQL setup:
 
 ```js
-Copy code
 const db = new pg.Client({
   user: "your_pg_user",
   host: "localhost",
@@ -65,7 +62,6 @@ const db = new pg.Client({
 4. Run Database Migrations: Set up the tables for the users and items:
 
 ```sql
-Copy code
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   name VARCHAR(100),
@@ -82,28 +78,27 @@ CREATE TABLE items (
 5. Start the Server:
 
 ```bash
-Copy code
 npm start
 ```
 6. Access the Application: Open your web browser and navigate to http://localhost:3000.
 
 ## Usage
 
-User Selection: Select a user from the list to view or add tasks.
-Add Tasks: Add a new task with a title and assign a due date category (e.g., today, this week, or this month).
-Edit Tasks: Click on the pencil icon to edit an existing task.
-Delete Tasks: Mark the checkbox next to a task to delete it.
+- User Selection: Select a user from the list to view or add tasks.
+- Add Tasks: Add a new task with a title and assign a due date category (e.g., today, this week, or this month).
+- Edit Tasks: Click on the pencil icon to edit an existing task.
+- Delete Tasks: Mark the checkbox next to a task to delete it.
 
 
 ## Endpoints
 
-GET /: Main endpoint to display tasks for the selected user and due date.
-POST /add: Adds a new task with a title and due date.
-POST /delete: Deletes a task.
-POST /edit: Updates the title of an existing task.
-POST /title: Sets the current due date filter.
-POST /user: Sets the current user or allows adding a new user.
-POST /new: Creates a new user with a name and color.
+* GET /: Main endpoint to display tasks for the selected user and due date.
+* POST /add: Adds a new task with a title and due date.
+* POST /delete: Deletes a task.
+* POST /edit: Updates the title of an existing task.
+* POST /title: Sets the current due date filter.
+* POST /user: Sets the current user or allows adding a new user.
+* POST /new: Creates a new user with a name and color.
 
 
 ## Folder Structure
@@ -131,12 +126,11 @@ family-todo-list-tracker
 ```
 ## Technologies Used
 
-Node.js: JavaScript runtime.
-Express.js: Web application framework.
-EJS: Templating engine.
-PostgreSQL: Relational database.
-CSS: Styling for the front-end.
-
+- Node.js: JavaScript runtime.
+- Express.js: Web application framework.
+- EJS: Templating engine.
+- PostgreSQL: Relational database.
+- CSS: Styling for the front-end.
 
 ## License
 This project is licensed under the MIT License.
